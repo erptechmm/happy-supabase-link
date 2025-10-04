@@ -184,13 +184,13 @@ export default function OdooHosting() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto px-4 py-8">
-        <Card className="mb-6 shadow-lg border-0 bg-white/90 backdrop-blur-sm">
+        <Card className="mb-6 shadow-lg">
           <CardHeader className="pb-4">
             <div className="flex items-center space-x-2">
-              <FileText className="h-6 w-6 text-blue-500" />
-              <CardTitle className="text-xl font-semibold text-gray-800">
+              <FileText className="h-6 w-6 text-primary" />
+              <CardTitle className="text-xl font-semibold text-foreground">
                 Odoo Hosting Configuration
               </CardTitle>
             </div>
@@ -239,7 +239,7 @@ export default function OdooHosting() {
                       </>
                     ) : (
                       <>
-                        <Label htmlFor={`config-${configNum}`} className="text-sm font-medium text-gray-700">
+                        <Label htmlFor={`config-${configNum}`} className="text-sm font-medium text-foreground">
                           {configLabels[configIndex] || `Config ${configNum}`}
                         </Label>
                         <Button
@@ -259,7 +259,7 @@ export default function OdooHosting() {
                       placeholder={`Enter config ${configNum}`}
                       value={configValue}
                       onChange={(e) => updateConfigValue(configIndex, e.target.value)}
-                      className="min-h-[100px] pr-2 pb-12 border-gray-200 focus:border-blue-400 focus:ring-blue-400 resize-y"
+                      className="min-h-[100px] pr-2 pb-12 resize-y"
                       rows={3}
                     />
                     <div className="absolute right-2 bottom-2 flex gap-1">
@@ -272,7 +272,7 @@ export default function OdooHosting() {
                       >
                         {configSaving ? (
                           <>
-                            <div className="h-3 w-3 mr-1 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
+                            <div className="h-3 w-3 mr-1 animate-spin rounded-full border-2 border-muted border-t-primary" />
                             Saving
                           </>
                         ) : configSaved ? (
@@ -296,7 +296,7 @@ export default function OdooHosting() {
                       >
                         {configCopied ? (
                           <>
-                            <CheckCircle className="h-3 w-3 mr-1 text-green-600" />
+                            <CheckCircle className="h-3 w-3 mr-1" />
                             Done
                           </>
                         ) : (
