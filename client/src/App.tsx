@@ -40,45 +40,57 @@ function AppSidebar({ user }: { user: any }) {
   };
   
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center justify-between px-2 py-1">
-          <h2 className="text-lg font-semibold text-sidebar-foreground">Navigation</h2>
+    <Sidebar className="border-r border-sidebar-border shadow-lg">
+      <SidebarHeader className="bg-sidebar-accent/50 border-b border-sidebar-border">
+        <div className="flex items-center justify-between px-4 py-3">
+          <h2 className="text-lg font-bold text-sidebar-foreground">Navigation</h2>
           {user && (
             <Button
               variant="ghost"
               size="sm"
               onClick={handleLogout}
-              className="h-8"
+              className="h-8 hover:bg-sidebar-accent hover:text-destructive transition-colors"
             >
               <LogOut className="h-4 w-4" />
             </Button>
           )}
         </div>
       </SidebarHeader>
-      <SidebarContent>
-        <SidebarMenu>
+      <SidebarContent className="bg-sidebar">
+        <SidebarMenu className="gap-1 px-2">
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={location === "/"}>
+            <SidebarMenuButton 
+              asChild 
+              isActive={location === "/"}
+              className="transition-all duration-200 hover:bg-sidebar-accent hover:scale-[1.02] data-[active=true]:bg-sidebar-primary data-[active=true]:text-sidebar-primary-foreground data-[active=true]:shadow-md"
+            >
               <Link href="/">
-                <FileText />
-                <span>Home</span>
+                <FileText className="h-4 w-4" />
+                <span className="font-medium">Home</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={location === "/git-replace"}>
+            <SidebarMenuButton 
+              asChild 
+              isActive={location === "/git-replace"}
+              className="transition-all duration-200 hover:bg-sidebar-accent hover:scale-[1.02] data-[active=true]:bg-sidebar-primary data-[active=true]:text-sidebar-primary-foreground data-[active=true]:shadow-md"
+            >
               <Link href="/git-replace">
-                <GitBranch />
-                <span>Git Replace Command</span>
+                <GitBranch className="h-4 w-4" />
+                <span className="font-medium">Git Replace Command</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={location === "/sales-workflows"}>
+            <SidebarMenuButton 
+              asChild 
+              isActive={location === "/sales-workflows"}
+              className="transition-all duration-200 hover:bg-sidebar-accent hover:scale-[1.02] data-[active=true]:bg-sidebar-primary data-[active=true]:text-sidebar-primary-foreground data-[active=true]:shadow-md"
+            >
               <Link href="/sales-workflows">
-                <FileText />
-                <span>Sales Workflows</span>
+                <FileText className="h-4 w-4" />
+                <span className="font-medium">Sales Workflows</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -86,38 +98,55 @@ function AppSidebar({ user }: { user: any }) {
             <SidebarMenuButton 
               onClick={() => setTechWorkflowsOpen(!techWorkflowsOpen)}
               isActive={location === "/replit-to-vercel" || location === "/lovable-prompts" || location === "/flutter-webview" || location === "/odoo-hosting"}
+              className="transition-all duration-200 hover:bg-sidebar-accent hover:scale-[1.02] data-[active=true]:bg-sidebar-primary data-[active=true]:text-sidebar-primary-foreground data-[active=true]:shadow-md"
             >
-              <Settings />
-              <span>Tech Workflows</span>
-              <ChevronRight className={`ml-auto transition-transform ${techWorkflowsOpen ? 'rotate-90' : ''}`} />
+              <Settings className="h-4 w-4" />
+              <span className="font-medium">Tech Workflows</span>
+              <ChevronRight className={`ml-auto transition-transform duration-200 ${techWorkflowsOpen ? 'rotate-90' : ''}`} />
             </SidebarMenuButton>
             {techWorkflowsOpen && (
-              <SidebarMenuSub>
+              <SidebarMenuSub className="ml-4 mt-1 space-y-1 border-l-2 border-sidebar-border pl-2">
                 <SidebarMenuSubItem>
-                  <SidebarMenuSubButton asChild isActive={location === "/lovable-prompts"}>
+                  <SidebarMenuSubButton 
+                    asChild 
+                    isActive={location === "/lovable-prompts"}
+                    className="transition-all duration-200 hover:bg-sidebar-accent/70 data-[active=true]:bg-sidebar-primary/80 data-[active=true]:text-sidebar-primary-foreground data-[active=true]:font-medium"
+                  >
                     <Link href="/lovable-prompts">
-                      <span>Lovable Prompts</span>
+                      <span className="text-sm">Lovable Prompts</span>
                     </Link>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
                 <SidebarMenuSubItem>
-                  <SidebarMenuSubButton asChild isActive={location === "/flutter-webview"}>
+                  <SidebarMenuSubButton 
+                    asChild 
+                    isActive={location === "/flutter-webview"}
+                    className="transition-all duration-200 hover:bg-sidebar-accent/70 data-[active=true]:bg-sidebar-primary/80 data-[active=true]:text-sidebar-primary-foreground data-[active=true]:font-medium"
+                  >
                     <Link href="/flutter-webview">
-                      <span>Flutter Web View App</span>
+                      <span className="text-sm">Flutter Web View App</span>
                     </Link>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
                 <SidebarMenuSubItem>
-                  <SidebarMenuSubButton asChild isActive={location === "/odoo-hosting"}>
+                  <SidebarMenuSubButton 
+                    asChild 
+                    isActive={location === "/odoo-hosting"}
+                    className="transition-all duration-200 hover:bg-sidebar-accent/70 data-[active=true]:bg-sidebar-primary/80 data-[active=true]:text-sidebar-primary-foreground data-[active=true]:font-medium"
+                  >
                     <Link href="/odoo-hosting">
-                      <span>Odoo Hosting</span>
+                      <span className="text-sm">Odoo Hosting</span>
                     </Link>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
                 <SidebarMenuSubItem>
-                  <SidebarMenuSubButton asChild isActive={location === "/replit-to-vercel"}>
+                  <SidebarMenuSubButton 
+                    asChild 
+                    isActive={location === "/replit-to-vercel"}
+                    className="transition-all duration-200 hover:bg-sidebar-accent/70 data-[active=true]:bg-sidebar-primary/80 data-[active=true]:text-sidebar-primary-foreground data-[active=true]:font-medium"
+                  >
                     <Link href="/replit-to-vercel">
-                      <span>Replit Made to Vercel Ready</span>
+                      <span className="text-sm">Replit Made to Vercel Ready</span>
                     </Link>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
@@ -125,9 +154,9 @@ function AppSidebar({ user }: { user: any }) {
             )}
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton>
-              <HelpCircle />
-              <span>Add-hocs Workflows</span>
+            <SidebarMenuButton className="transition-all duration-200 hover:bg-sidebar-accent hover:scale-[1.02]">
+              <HelpCircle className="h-4 w-4" />
+              <span className="font-medium">Add-hocs Workflows</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
